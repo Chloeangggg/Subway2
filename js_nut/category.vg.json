@@ -1,0 +1,54 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#E0F1DD",
+    "width": 650,
+    "height": 350,
+    "title": "Category Counts",
+    "data": {
+      "url": "js_nut/SubwayMenuNutrition.csv"
+    },
+    "transform": [
+      {
+        "aggregate": [
+          {"op": "count", "as": "count"}
+        ],
+        "groupby": ["Category"]
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {"field": "Category", "type": "nominal"}, 
+      "y": {"field": "count", "type": "quantitative"},
+      "tooltip": [{"field": "Category", "title": "Category"}, {"field": "count", "title": "Count"}],
+      "color": {
+        "field": "Category",
+        "type": "nominal",
+        "scale": {
+            "domain": [
+            "Breakfast",
+            "Sandwiches",
+            "Wraps",
+            "Bowls",
+            "Salads",
+            "Panini",
+            "Bread & Toppings",
+            "Drinks",
+            "Extras"
+            ],
+            "range": [
+      
+            "#d70e4f",
+            "#f46d43",
+            "#fdae61",
+            "#d99e4f",
+            "#fee08b",
+            "#ffffbf",
+            "#e6f598",
+            "#abdda4",
+            "#66c2a5"
+            ]
+        }
+        }
+    },
+    "config": {"legend": {"orient": "bottom"}}
+  }

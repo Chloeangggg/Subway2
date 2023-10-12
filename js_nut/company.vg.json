@@ -1,0 +1,16 @@
+
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"background": "#E0F1DD",
+"width": 650,
+"height": 350,
+"data": {
+  "url": "js_nut/company - Sheet1.csv"
+},
+"mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "Year"},
+    "y": {"field": "Revenue", "type": "quantitative"},
+    "color":{"field":"Company","type": "nominal"}
+  },
+  "config": {"legend": {"orient": "bottom"}}
+}
