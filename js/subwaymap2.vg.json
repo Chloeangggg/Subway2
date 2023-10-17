@@ -1,0 +1,703 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 780,
+    "height": 500,
+    "background":"#f3f4d1",
+    "config": {
+      "view": {
+         "stroke": "transparent"
+      }
+    },
+
+    "params": [
+      {
+      "name": "zoom_level",
+      "value": 950,
+      "bind": {
+      "input": "range",
+      "min": 950,
+      "max": 7000,
+      "step": 100,
+      "name": "Zoom: "
+        }
+      },
+      {"name": "Category_selection",
+      "bind": {
+      "input": "select",
+      "options": [
+        "all","AL","AK","CA","AZ","AR", "CA", "CO", "CT", "NY","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MA","MD","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","NY","ND","NC","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
+      ],
+      "name": "Selection: "
+      }
+      }
+    ],
+    "projection": {
+    "center": [-119.4179,36.7783] ,
+      "type": "albersUsa"
+
+    },
+    "layer": [
+      {
+        "data": {
+          "url": "js/ne.json",
+          "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}
+        },
+        
+        "transform": [{"filter": "Category_selection !='AK' && Category_selection !='AL' && Category_selection != 'CA' && Category_selection != 'CO' && Category_selection != 'CT' && Category_selection !='AZ'"}],
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "datum.longitude != 0 && datum.latitude != 0"},
+            {"filter": "Category_selection !='AK' && Category_selection !='AL' && Category_selection != 'CA' && Category_selection != 'CO' && Category_selection != 'CT' && Category_selection !='AZ'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#023020"
+          
+        },  
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_california.json",
+          "format": {"type": "topojson", "feature": "1"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='CA'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [120, 0],
+                "center": [0, 37.5],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='CA' && datum.state == 'CA'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+
+            "type": "albers",
+            "rotate": [120, 0],
+            "center": [0, 37.5],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+        
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Nevada"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='NV'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [118, 2],
+                "center": [0, 39.5],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='NV' && datum.state == 'NV'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [118, 2],
+            "center": [0, 39.5],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Alaska"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='AK'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [145, 1],
+                "center": [0, 65.58],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='AK' && datum.state == 'AK'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [145, 1],
+            "center": [0, 65.58],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Arizona"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='AZ'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [113, 1],
+                "center": [0, 34.3046],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='AZ' && datum.state == 'AZ'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [113, 1],
+            "center": [0, 34.3046],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Colorado"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='CO'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [105, 1],
+                "center": [0, 39.55],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='CO' && datum.state == 'CO'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [105, 1],
+            "center": [0, 39.55],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Mexico"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='NM'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [105, 1],
+                "center": [0, 34.5002],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='NM' && datum.state == 'NM'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [105, 1],
+            "center": [0, 34.5002],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Texas"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='TX'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [98, 0],
+                "center": [0, 31.131],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='TX' && datum.state == 'TX'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [98, 0],
+            "center": [0, 31.131],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Oklahoma"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='OK'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [98, 0],
+                "center": [0, 35.452],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='OK' && datum.state == 'OK'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [98, 0],
+            "center": [0, 35.452],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Wyoming"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='WY'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [108, 0],
+                "center": [0, 42.9999],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='WY' && datum.state == 'WY'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [108, 0],
+            "center": [0, 42.9999],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Montana"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='MT'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [108, 0],
+                "center": [0, 43.7825],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='MT' && datum.state == 'MT'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [108, 0],
+            "center": [0, 43.7825],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Oregon"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='OR'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [108, 0],
+                "center": [0, 43.8333],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='OR' && datum.state == 'OR'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [108, 0],
+            "center": [0, 43.8333],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Idaho"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='ID'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [108, 0],
+                "center": [0, 43.7825],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='ID' && datum.state == 'ID'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [108, 0],
+            "center": [0, 43.7825],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      }
+      ,
+      {
+        "data": {
+          "url": "js/More.json",
+          "format": {"type": "topojson", "feature": "Washington"}
+        },
+        "transform": [
+            {"filter": "Category_selection =='WA'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [120, 0],
+                "center": [0, 47.48655],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "Category_selection =='WA' && datum.state == 'WA'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [120, 0],
+            "center": [0, 47.4865],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      }
+      
+    ]
+}
