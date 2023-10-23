@@ -21,11 +21,11 @@
       "name": "Zoom: "
         }
       },
-      {"name": "Category_selection",
+      {"name": "CS",
       "bind": {
       "input": "select",
       "options": [
-        "all","AK","AZ","CO","NM","TX","OK","WY","MT","OR","ID","WA","LA","FL"
+        "all","AK","AZ","CO","NM","TX","OK","WY","MT","OR","ID","WA","LA","FL","NV","MS","MA","NY","PA","NC","SC"
       ],
       "name": "Selection: "
       }
@@ -43,7 +43,7 @@
           "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}
         },
         
-        "transform": [{"filter": "Category_selection !='AK' && Category_selection !='AZ' && Category_selection != 'CO' && Category_selection != 'CO' && Category_selection != 'NM' && Category_selection !='TX' && Category_selection !='OK'&& Category_selection !='MT' && Category_selection !='OR'&& Category_selection !='ID' && Category_selection !='WA'&& Category_selection != 'LA' && Category_selection != 'FL'"}],
+        "transform": [{"filter": "CS !='AK' && CS !='AZ' && CS != 'CO' && CS != 'NM' && CS !='TX' && CS !='OK'&& CS !='WY' && CS !='MT' && CS !='OR' && CS !='ID' && CS !='WA' && CS != 'LA' && CS != 'FL' && CS!= 'NV' &&  CS != 'MS' && CS != 'MA' && CS != 'NY' && CS != 'PA' && CS != 'NC' && CS != 'SC'"}],
         "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
       },
       {
@@ -52,7 +52,7 @@
         },
         "transform": [
           {"filter": "datum.longitude != 0 && datum.latitude != 0"},
-            {"filter": "Category_selection !='AK' && Category_selection !='AZ' && Category_selection != 'CO' && Category_selection != 'CO' && Category_selection != 'NM' && Category_selection !='TX' && Category_selection !='OK'&& Category_selection !='MT' && Category_selection !='OR'&& Category_selection !='ID' && Category_selection !='WA' && Category_selection != 'LA' && Category_selection != 'FL'"}],
+            {"filter": "CS !='AK' && CS !='AZ' && CS != 'CO' && CS != 'NM' && CS !='TX' && CS !='OK' && CS !='WY' && CS !='MT' && CS !='OR' && CS !='ID' && CS !='WA' && CS != 'LA' && CS != 'FL' && CS!= 'NV' &&  CS != 'MS' && CS != 'MA'  && CS != 'NY' && CS != 'PA' && CS != 'NC' && CS != 'SC'"}],
         "mark": {
           "type": "circle",
           "fill":"#023020"
@@ -76,7 +76,7 @@
           "format": {"type": "topojson", "feature": "1"}
         },
         "transform": [
-            {"filter": "Category_selection =='CA'"}],
+            {"filter": "CS =='CA'"}],
         "projection": {
 
                 "type": "albers",
@@ -94,7 +94,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='CA' && datum.state == 'CA'"}],
+          {"filter": "CS =='CA' && datum.state == 'CA'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -127,7 +127,7 @@
           "format": {"type": "topojson", "feature": "Nevada"}
         },
         "transform": [
-            {"filter": "Category_selection =='NV'"}],
+            {"filter": "CS =='NV'"}],
         "projection": {
 
                 "type": "albers",
@@ -144,7 +144,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='NV' && datum.state == 'NV'"}],
+          {"filter": "CS =='NV' && datum.state == 'NV'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -175,7 +175,7 @@
           "format": {"type": "topojson", "feature": "Alaska"}
         },
         "transform": [
-            {"filter": "Category_selection =='AK'"}],
+            {"filter": "CS =='AK'"}],
         "projection": {
 
                 "type": "albers",
@@ -192,7 +192,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='AK' && datum.state == 'AK'"}],
+          {"filter": "CS =='AK' && datum.state == 'AK'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -223,7 +223,7 @@
           "format": {"type": "topojson", "feature": "Arizona"}
         },
         "transform": [
-            {"filter": "Category_selection =='AZ'"}],
+            {"filter": "CS =='AZ'"}],
         "projection": {
 
                 "type": "albers",
@@ -240,7 +240,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='AZ' && datum.state == 'AZ'"}],
+          {"filter": "CS =='AZ' && datum.state == 'AZ'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -271,7 +271,7 @@
           "format": {"type": "topojson", "feature": "Colorado"}
         },
         "transform": [
-            {"filter": "Category_selection =='CO'"}],
+            {"filter": "CS =='CO'"}],
         "projection": {
 
                 "type": "albers",
@@ -288,7 +288,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='CO' && datum.state == 'CO'"}],
+          {"filter": "CS =='CO' && datum.state == 'CO'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -319,7 +319,7 @@
           "format": {"type": "topojson", "feature": "Mexico"}
         },
         "transform": [
-            {"filter": "Category_selection =='NM'"}],
+            {"filter": "CS =='NM'"}],
         "projection": {
 
                 "type": "albers",
@@ -336,7 +336,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='NM' && datum.state == 'NM'"}],
+          {"filter": "CS =='NM' && datum.state == 'NM'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -367,7 +367,7 @@
           "format": {"type": "topojson", "feature": "Texas"}
         },
         "transform": [
-            {"filter": "Category_selection =='TX'"}],
+            {"filter": "CS =='TX'"}],
         "projection": {
 
                 "type": "albers",
@@ -384,7 +384,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='TX' && datum.state == 'TX'"}],
+          {"filter": "CS =='TX' && datum.state == 'TX'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -415,7 +415,7 @@
           "format": {"type": "topojson", "feature": "Oklahoma"}
         },
         "transform": [
-            {"filter": "Category_selection =='OK'"}],
+            {"filter": "CS =='OK'"}],
         "projection": {
 
                 "type": "albers",
@@ -432,7 +432,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='OK' && datum.state == 'OK'"}],
+          {"filter": "CS =='OK' && datum.state == 'OK'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -463,7 +463,7 @@
           "format": {"type": "topojson", "feature": "Wyoming"}
         },
         "transform": [
-            {"filter": "Category_selection =='WY'"}],
+            {"filter": "CS =='WY'"}],
         "projection": {
 
                 "type": "albers",
@@ -480,7 +480,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='WY' && datum.state == 'WY'"}],
+          {"filter": "CS =='WY' && datum.state == 'WY'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -511,12 +511,13 @@
           "format": {"type": "topojson", "feature": "Montana"}
         },
         "transform": [
-            {"filter": "Category_selection =='MT'"}],
+            {"filter": "CS =='MT'"}],
         "projection": {
 
                 "type": "albers",
                 "rotate": [108, 0],
-                "center": [0, 43.7825],
+        
+                "center": [0, 46.8797],
                 "parallels": [29.5, 45.5],
                 "scale": {"expr": "zoom_level"}
             
@@ -528,7 +529,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='MT' && datum.state == 'MT'"}],
+          {"filter": "CS =='MT' && datum.state == 'MT'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -537,7 +538,7 @@
         "projection": {
             "type": "albers",
             "rotate": [108, 0],
-            "center": [0, 43.7825],
+            "center": [0, 46.8797],
             "parallels": [29.5, 45.5],
             "scale": {"expr": "zoom_level"}
             },
@@ -559,7 +560,7 @@
           "format": {"type": "topojson", "feature": "Oregon"}
         },
         "transform": [
-            {"filter": "Category_selection =='OR'"}],
+            {"filter": "CS =='OR'"}],
         "projection": {
 
                 "type": "albers",
@@ -576,7 +577,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='OR' && datum.state == 'OR'"}],
+          {"filter": "CS =='OR' && datum.state == 'OR'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -607,11 +608,11 @@
           "format": {"type": "topojson", "feature": "Idaho"}
         },
         "transform": [
-            {"filter": "Category_selection =='ID'"}],
+            {"filter": "CS =='ID'"}],
         "projection": {
 
                 "type": "albers",
-                "rotate": [108, 0],
+                "rotate": [115, 0],
                 "center": [0, 44.0682],
                 "parallels": [29.5, 45.5],
                 "scale": {"expr": "zoom_level"}
@@ -624,7 +625,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='ID' && datum.state == 'ID'"}],
+          {"filter": "CS =='ID' && datum.state == 'ID'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -632,8 +633,8 @@
         },  
         "projection": {
             "type": "albers",
-            "rotate": [108, 0],
-            "center": [0, 43.7825],
+            "rotate": [115, 0],
+            "center": [0, 44.0682],
             "parallels": [29.5, 45.5],
             "scale": {"expr": "zoom_level"}
             },
@@ -656,7 +657,7 @@
           "format": {"type": "topojson", "feature": "Washington"}
         },
         "transform": [
-            {"filter": "Category_selection =='WA'"}],
+            {"filter": "CS =='WA'"}],
         "projection": {
 
                 "type": "albers",
@@ -673,7 +674,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='WA' && datum.state == 'WA'"}],
+          {"filter": "CS =='WA' && datum.state == 'WA'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -704,11 +705,11 @@
           "format": {"type": "topojson", "feature": "Louisiana"}
         },
         "transform": [
-            {"filter": "Category_selection =='LA'"}],
+            {"filter": "CS =='LA'"}],
         "projection": {
 
                 "type": "albers",
-                "rotate": [90, 0],
+                "rotate": [92, 0],
                 "center": [0, 30.519147],
                 "parallels": [29.5, 45.5],
                 "scale": {"expr": "zoom_level"}
@@ -721,7 +722,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='LA' && datum.state == 'LA'"}],
+          {"filter": "CS =='LA' && datum.state == 'LA'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -729,7 +730,7 @@
         },  
         "projection": {
             "type": "albers",
-            "rotate": [90, 0],
+            "rotate": [92, 0],
             "center": [0, 30.5191],
             "parallels": [29.5, 45.5],
             "scale": {"expr": "zoom_level"}
@@ -752,7 +753,7 @@
           "format": {"type": "topojson", "feature": "Florida"}
         },
         "transform": [
-            {"filter": "Category_selection =='FL'"}],
+            {"filter": "CS =='FL'"}],
         "projection": {
 
                 "type": "albers",
@@ -769,7 +770,7 @@
           "url": "js/subway_locations_in_us.csv"
         },
         "transform": [
-          {"filter": "Category_selection =='FL' && datum.state == 'FL'"}],
+          {"filter": "CS =='FL' && datum.state == 'FL'"}],
         "mark": {
           "type": "circle",
           "fill":"#e24a0e"
@@ -779,6 +780,405 @@
             "type": "albers",
             "rotate": [85, 0],
             "center": [0, 27.6648],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "Mississippi"}
+        },
+        "transform": [
+            {"filter": "CS == 'MS'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [90, 0],
+                "center": [0, 32.8657],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS == 'MS' && datum.state == 'MS'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [90, 0],
+            "center": [0, 32.8657],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      }
+      ,
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "Massachusetts"}
+        },
+        "transform": [
+            {"filter": "CS =='MA'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [72, 0],
+                "center": [0, 41.6486],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='MA' && datum.state == 'MA'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [72, 0],
+            "center": [0, 41.6486],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      }
+      ,
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "New York"}
+        },
+        "transform": [
+            {"filter": "CS =='NY'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [75, 2],
+                "center": [0, 43.1988],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='NY' && datum.state == 'NY'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [75, 2],
+            "center": [0, 43.1988],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "New York"}
+        },
+        "transform": [
+            {"filter": "CS =='NY'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [75, 2],
+                "center": [0, 43.1988],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='NY' && datum.state == 'NY'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [75, 2],
+            "center": [0, 43.1988],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      }
+      ,
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='NY' && datum.state == 'NY'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [75, 2],
+            "center": [0, 43.1988],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "Pennsylvania"}
+        },
+        "transform": [
+            {"filter": "CS =='PA'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [78, 0],
+                "center": [0, 40.8601],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='PA' && datum.state == 'PA'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [78, 0],
+            "center": [0, 40.8601],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='NY' && datum.state == 'NY'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [75, 2],
+            "center": [0, 43.1988],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "North Carolina"}
+        },
+        "transform": [
+            {"filter": "CS =='NC'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [80, 0],
+                "center": [0, 35.6152],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='NC' && datum.state == 'NC'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [80, 0],
+            "center": [0, 35.6152],
+            "parallels": [29.5, 45.5],
+            "scale": {"expr": "zoom_level"}
+            },
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"},
+          "tooltip":[{"field":"title","type":"nominal"},
+            {"field":"address","type":"nominal"},
+            {"field":"city","type":"nominal"},
+            {"field":"state","type":"nominal"},
+            {"field":"postal_code","type":"nominal"}
+        ]
+        
+        }
+      },
+      {
+        "data": {
+          "url": "js/states_provinces_3.json",
+          "format": {"type": "topojson", "feature": "South Carolina"}
+        },
+        "transform": [
+            {"filter": "CS =='SC'"}],
+        "projection": {
+
+                "type": "albers",
+                "rotate": [81, 0],
+                "center": [0, 33.8578],
+                "parallels": [29.5, 45.5],
+                "scale": {"expr": "zoom_level"}
+            
+                },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/subway_locations_in_us.csv"
+        },
+        "transform": [
+          {"filter": "CS =='SC' && datum.state == 'SC'"}],
+        "mark": {
+          "type": "circle",
+          "fill":"#e24a0e"
+          
+        },  
+        "projection": {
+            "type": "albers",
+            "rotate": [81, 0],
+            "center": [0, 33.8578],
             "parallels": [29.5, 45.5],
             "scale": {"expr": "zoom_level"}
             },
